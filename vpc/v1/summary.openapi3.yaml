@@ -1,4 +1,4 @@
-openapi: "3.0"
+openapi: "3.0.0"
 info:
   title: Yandex Virtual Private Cloud API
   description: This API reference is organized by resource. Actions are performed
@@ -1561,10 +1561,8 @@ components:
             format: boolean
           type:
             $ref: '#/components/schemas/AddressType'
-            description: Type of the IP address.
           ipVersion:
             $ref: '#/components/schemas/AddressIpVersion'
-            description: Vervion of the IP address.
       - title: address
         type: object
         maxProperties: 1
@@ -1913,7 +1911,6 @@ components:
           type: string
         requirements:
           $ref: '#/components/schemas/AddressRequirements'
-          description: Parameters of the allocated address, for example DDoS Protection.
     ExternalIpv4AddressSpec:
       type: object
       properties:
@@ -1925,7 +1922,6 @@ components:
           type: string
         requirements:
           $ref: '#/components/schemas/AddressRequirements'
-          description: Parameters of the allocated address, for example DDoS Protection.
     FieldMask:
       description: |-
         A comma-separated names off ALL fields to be updated.
@@ -2299,7 +2295,6 @@ components:
         properties:
           error:
             $ref: '#/components/schemas/rpcStatus'
-            description: The error result of the operation in case of failure or cancellation.
           response:
             description: |-
               The normal response of the operation in case of success.
@@ -2445,7 +2440,6 @@ components:
               type: string
           direction:
             $ref: '#/components/schemas/SecurityGroupRuleDirection'
-            description: Required.
           ports:
             $ref: '#/components/schemas/PortRange'
           protocolName:
@@ -2484,7 +2478,6 @@ components:
               type: string
           direction:
             $ref: '#/components/schemas/SecurityGroupRuleDirection'
-            description: Required.
           ports:
             $ref: '#/components/schemas/PortRange'
       - title: protocol
@@ -2608,8 +2601,6 @@ components:
       properties:
         updateMask:
           $ref: '#/components/schemas/FieldMask'
-          description: Field mask that specifies which attributes of the Address should
-            be updated.
         name:
           description: |-
             New name for the address.
@@ -2656,8 +2647,6 @@ components:
       properties:
         updateMask:
           $ref: '#/components/schemas/FieldMask'
-          description: Field mask that specifies which fields of the Network resource
-            are going to be updated.
         name:
           description: |-
             Name of the network.
@@ -2694,8 +2683,6 @@ components:
       properties:
         updateMask:
           $ref: '#/components/schemas/FieldMask'
-          description: Field mask that specifies which fields of the RouteTable resource
-            are going to be updated.
         name:
           description: |-
             Name of the route table.
@@ -2793,8 +2780,6 @@ components:
       properties:
         updateMask:
           $ref: '#/components/schemas/FieldMask'
-          description: Field mask that specifies which fields of the Subnet resource
-            are going to be updated.
         name:
           description: |-
             Name of the subnet.

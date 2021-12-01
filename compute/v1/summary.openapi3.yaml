@@ -1,4 +1,4 @@
-openapi: "3.0"
+openapi: "3.0.0"
 info:
   title: Yandex Compute Cloud API
   description: This API reference is organized by resource. Actions are performed
@@ -2575,9 +2575,6 @@ components:
           type: string
         oneToOneNatSpec:
           $ref: '#/components/schemas/OneToOneNatSpec'
-          description: |-
-            An external IP address configuration.
-            If not specified, then this instance will have no external internet access.
     AttachInstanceDiskMetadata:
       type: object
       properties:
@@ -2592,9 +2589,6 @@ components:
       properties:
         attachedDiskSpec:
           $ref: '#/components/schemas/AttachedDiskSpec'
-          description: |-
-            Required.
-            Disk that should be attached.
     AttachInstanceFilesystemMetadata:
       type: object
       properties:
@@ -2609,15 +2603,11 @@ components:
       properties:
         attachedFilesystemSpec:
           $ref: '#/components/schemas/AttachedFilesystemSpec'
-          description: |-
-            Required.
-            Filesystem to attach to the instance.
     AttachedDisk:
       type: object
       properties:
         mode:
           $ref: '#/components/schemas/AttachedDiskMode'
-          description: Access mode to the Disk resource.
         deviceName:
           description: |-
             Serial number that is reflected into the /dev/disk/by-id/ tree
@@ -2648,7 +2638,6 @@ components:
         properties:
           mode:
             $ref: '#/components/schemas/AttachedDiskSpecMode'
-            description: The mode in which to attach this disk.
           deviceName:
             description: |-
               Specifies a unique serial number of your choice that is reflected into the /dev/disk/by-id/ tree
@@ -2670,7 +2659,6 @@ components:
         properties:
           diskSpec:
             $ref: '#/components/schemas/AttachedDiskSpecDiskSpec'
-            description: Disk specification.
           diskId:
             description: |-
               ID of the disk that should be attached.
@@ -2716,7 +2704,6 @@ components:
             format: int64
           diskPlacementPolicy:
             $ref: '#/components/schemas/DiskPlacementPolicy'
-            description: Placement policy configuration.
       - title: source
         type: object
         maxProperties: 1
@@ -2746,7 +2733,6 @@ components:
       properties:
         mode:
           $ref: '#/components/schemas/AttachedFilesystemMode'
-          description: Access mode to the filesystem.
         deviceName:
           description: |-
             Name of the device representing the filesystem on the instance.
@@ -2770,7 +2756,6 @@ components:
       properties:
         mode:
           $ref: '#/components/schemas/AttachedFilesystemSpecMode'
-          description: Mode of access to the filesystem that should be attached.
         deviceName:
           description: |-
             Name of the device representing the filesystem on the instance.
@@ -2859,7 +2844,6 @@ components:
         properties:
           spreadPlacementStrategy:
             $ref: '#/components/schemas/DiskSpreadPlacementStrategy'
-            description: Distribute disks over distinct failure domains.
     CreateDiskRequest:
       type: object
       allOf:
@@ -2929,7 +2913,6 @@ components:
             format: int64
           diskPlacementPolicy:
             $ref: '#/components/schemas/DiskPlacementPolicy'
-            description: Placement policy configuration.
       - title: source
         type: object
         maxProperties: 1
@@ -3085,11 +3068,8 @@ components:
           type: string
         maintenancePolicy:
           $ref: '#/components/schemas/MaintenancePolicy'
-          description: Behaviour on maintenance events.
         scalePolicy:
           $ref: '#/components/schemas/ScalePolicy'
-          description: Scale policy. Only fixed number of hosts are supported at this
-            moment.
     CreateImageMetadata:
       type: object
       properties:
@@ -3166,10 +3146,6 @@ components:
               type: string
           os:
             $ref: '#/components/schemas/Os'
-            description: |-
-              Operating system that is contained in the image.
-
-              If not specified and you used the `image_id` or `disk_id` field to set the source, then the value can be inherited from the source resource.
           pooled:
             description: When true, an image pool will be created for fast creation
               disks from the image.
@@ -3267,10 +3243,6 @@ components:
           type: string
         resourcesSpec:
           $ref: '#/components/schemas/ResourcesSpec'
-          description: |-
-            Required.
-            Computing resources of the instance, such as the amount of memory and number of cores.
-            To get a list of available values, see [Levels of core performance](/docs/compute/concepts/performance-levels).
         metadata:
           description: |-
             The metadata `key:value` pairs that will be assigned to this instance. This includes custom metadata and predefined keys.
@@ -3286,9 +3258,6 @@ components:
             type: string
         bootDiskSpec:
           $ref: '#/components/schemas/AttachedDiskSpec'
-          description: |-
-            Required.
-            Boot disk to attach to the instance.
         secondaryDiskSpecs:
           description: |-
             Array of secondary disks to attach to the instance.
@@ -3331,7 +3300,6 @@ components:
           type: string
         schedulingPolicy:
           $ref: '#/components/schemas/SchedulingPolicy'
-          description: Scheduling policy configuration.
         serviceAccountId:
           description: |-
             ID of the service account to use for [authentication inside the instance](/docs/compute/operations/vm-connect/auth-inside-vm).
@@ -3339,10 +3307,8 @@ components:
           type: string
         networkSettings:
           $ref: '#/components/schemas/NetworkSettings'
-          description: Network settings.
         placementPolicy:
           $ref: '#/components/schemas/PlacementPolicy'
-          description: Placement policy configuration.
     CreatePlacementGroupMetadata:
       type: object
       properties:
@@ -3377,8 +3343,6 @@ components:
         properties:
           spreadPlacementStrategy:
             $ref: '#/components/schemas/SpreadPlacementStrategy'
-            description: Anti-affinity placement strategy (`spread`). Instances are
-              distributed over distinct failure domains.
     CreateSnapshotMetadata:
       type: object
       properties:
@@ -3593,7 +3557,6 @@ components:
               type: string
           status:
             $ref: '#/components/schemas/DiskStatus'
-            description: Current status of the disk.
           instanceIds:
             description: Array of instances to which the disk is attached.
             type: array
@@ -3601,7 +3564,6 @@ components:
               type: string
           diskPlacementPolicy:
             $ref: '#/components/schemas/DiskPlacementPolicy'
-            description: Placement policy configuration.
       - title: source
         type: object
         maxProperties: 1
@@ -3648,14 +3610,12 @@ components:
             type: string
           status:
             $ref: '#/components/schemas/DiskPlacementGroupStatus'
-            description: Current status of the placement group
       - title: placement_strategy
         type: object
         maxProperties: 1
         properties:
           spreadPlacementStrategy:
             $ref: '#/components/schemas/DiskSpreadPlacementStrategy'
-            description: Distribute instances over distinct failure domains.
     DiskPlacementGroupStatus:
       type: string
       enum:
@@ -3810,7 +3770,6 @@ components:
           format: int64
         status:
           $ref: '#/components/schemas/FilesystemStatus'
-          description: Current status of the filesystem.
     FilesystemStatus:
       description: |2-
          - CREATING: The filesystem is being created.
@@ -3840,8 +3799,6 @@ components:
           type: string
         status:
           $ref: '#/components/schemas/HostStatus'
-          description: Current status of the host. New instances are unable to start
-            on host in DOWN status.
         serverId:
           description: ID of the physical server that the host belongs to.
           type: string
@@ -3878,17 +3835,13 @@ components:
           type: string
         status:
           $ref: '#/components/schemas/HostGroupStatus'
-          description: Status of the group.
         typeId:
           description: ID of host type. Resources provided by each host of the group.
           type: string
         maintenancePolicy:
           $ref: '#/components/schemas/MaintenancePolicy'
-          description: Behaviour on maintenance events.
         scalePolicy:
           $ref: '#/components/schemas/ScalePolicy'
-          description: Scale policy. Only fixed number of hosts are supported at this
-            moment.
     HostGroupStatus:
       type: string
       enum:
@@ -3976,10 +3929,8 @@ components:
             type: string
         status:
           $ref: '#/components/schemas/ImageStatus'
-          description: Current status of the image.
         os:
           $ref: '#/components/schemas/Os'
-          description: Operating system that is contained in the image.
         pooled:
           description: When true, indicates there is an image pool for fast creation
             disks from the image.
@@ -4031,11 +3982,8 @@ components:
           type: string
         resources:
           $ref: '#/components/schemas/Resources'
-          description: Computing resources of the instance such as the amount of memory
-            and number of cores.
         status:
           $ref: '#/components/schemas/InstanceStatus'
-          description: Status of the instance.
         metadata:
           description: |-
             The metadata `key:value` pairs assigned to this instance. This includes custom metadata and predefined keys.
@@ -4047,7 +3995,6 @@ components:
             type: string
         bootDisk:
           $ref: '#/components/schemas/AttachedDisk'
-          description: Boot disk that is attached to the instance.
         secondaryDisks:
           description: Array of secondary disks that are attached to the instance.
           type: array
@@ -4071,7 +4018,6 @@ components:
           type: string
         schedulingPolicy:
           $ref: '#/components/schemas/SchedulingPolicy'
-          description: Scheduling policy configuration.
         serviceAccountId:
           description: |-
             ID of the service account to use for [authentication inside the instance](/docs/compute/operations/vm-connect/auth-inside-vm).
@@ -4079,10 +4025,8 @@ components:
           type: string
         networkSettings:
           $ref: '#/components/schemas/NetworkSettings'
-          description: Network Settings
         placementPolicy:
           $ref: '#/components/schemas/PlacementPolicy'
-          description: Placement policy configuration.
     InstanceStatus:
       description: |2-
          - PROVISIONING: Instance is waiting for resources to be allocated.
@@ -4521,12 +4465,8 @@ components:
           type: string
         primaryV4Address:
           $ref: '#/components/schemas/PrimaryAddress'
-          description: Primary IPv4 address that is assigned to the instance for this
-            network interface.
         primaryV6Address:
           $ref: '#/components/schemas/PrimaryAddress'
-          description: Primary IPv6 address that is assigned to the instance for this
-            network interface. IPv6 not available yet.
         securityGroupIds:
           description: ID's of security groups attached to the interface
           type: array
@@ -4544,12 +4484,8 @@ components:
           type: string
         primaryV4AddressSpec:
           $ref: '#/components/schemas/PrimaryAddressSpec'
-          description: Primary IPv4 address that will be assigned to the instance
-            for this network interface.
         primaryV6AddressSpec:
           $ref: '#/components/schemas/PrimaryAddressSpec'
-          description: Primary IPv6 address that will be assigned to the instance
-            for this network interface. IPv6 not available yet.
         securityGroupIds:
           description: ID's of security groups attached to the interface
           type: array
@@ -4560,7 +4496,6 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/NetworkSettingsType'
-          description: Network Type
     NetworkSettingsType:
       description: |2-
          - STANDARD: Standard network.
@@ -4579,7 +4514,6 @@ components:
           type: string
         ipVersion:
           $ref: '#/components/schemas/IpVersion'
-          description: IP version for the external IP address.
         dnsRecords:
           description: External DNS configuration
           type: array
@@ -4590,7 +4524,6 @@ components:
       properties:
         ipVersion:
           $ref: '#/components/schemas/IpVersion'
-          description: External IP address version.
         address:
           type: string
         dnsRecordSpecs:
@@ -4645,7 +4578,6 @@ components:
         properties:
           error:
             $ref: '#/components/schemas/rpcStatus'
-            description: The error result of the operation in case of failure or cancellation.
           response:
             description: |-
               The normal response of the operation in case of success.
@@ -4660,10 +4592,6 @@ components:
       properties:
         type:
           $ref: '#/components/schemas/OsType'
-          description: |-
-            Operating system type. The default is `LINUX`.
-
-            This field is used to correctly emulate a vCPU and calculate the cost of using an instance.
     OsType:
       description: |2-
          - LINUX: Linux operating system.
@@ -4709,9 +4637,6 @@ components:
         properties:
           spreadPlacementStrategy:
             $ref: '#/components/schemas/SpreadPlacementStrategy'
-            description: |-
-              Anti-affinity placement strategy (`spread`). Instances are distributed
-              over distinct failure domains.
     PlacementPolicy:
       type: object
       properties:
@@ -4733,7 +4658,6 @@ components:
           type: string
         op:
           $ref: '#/components/schemas/PlacementPolicyHostAffinityRuleOperator'
-          description: Include or exclude action
         values:
           description: Affinity value or host ID or host group ID
           type: array
@@ -4753,8 +4677,6 @@ components:
           type: string
         oneToOneNat:
           $ref: '#/components/schemas/OneToOneNat'
-          description: One-to-one NAT configuration. If missing, NAT has not been
-            set up.
         dnsRecords:
           description: Internal DNS configuration
           type: array
@@ -4770,9 +4692,6 @@ components:
           type: string
         oneToOneNatSpec:
           $ref: '#/components/schemas/OneToOneNatSpec'
-          description: |-
-            An external IP address configuration.
-            If not specified, then this instance will have no external internet access.
         dnsRecordSpecs:
           description: Internal DNS configuration
           type: array
@@ -4933,7 +4852,6 @@ components:
             type: string
         status:
           $ref: '#/components/schemas/SnapshotStatus'
-          description: Current status of the snapshot.
         sourceDiskId:
           description: ID of the source disk used to create this snapshot.
           type: string
@@ -4984,8 +4902,6 @@ components:
       properties:
         updateMask:
           $ref: '#/components/schemas/FieldMask'
-          description: Field mask that specifies which fields of the DiskPlacementGroup
-            resource are going to be updated.
         name:
           description: |-
             Name of the placement group.
@@ -5017,8 +4933,6 @@ components:
       properties:
         updateMask:
           $ref: '#/components/schemas/FieldMask'
-          description: Field mask that specifies which fields of the Disk resource
-            are going to be updated.
         name:
           description: |-
             Name of the disk.
@@ -5054,7 +4968,6 @@ components:
           format: int64
         diskPlacementPolicy:
           $ref: '#/components/schemas/DiskPlacementPolicy'
-          description: Placement policy configuration.
     UpdateFilesystemMetadata:
       type: object
       properties:
@@ -5066,8 +4979,6 @@ components:
       properties:
         updateMask:
           $ref: '#/components/schemas/FieldMask'
-          description: Field mask that specifies which attributes of the filesystem
-            should be updated.
         name:
           description: |-
             New name of the filesystem. The name must be unique within the folder.
@@ -5110,8 +5021,6 @@ components:
       properties:
         updateMask:
           $ref: '#/components/schemas/FieldMask'
-          description: Field mask that specifies which fields of the HostGroup resource
-            are going to be updated.
         name:
           description: |-
             Name of the group.
@@ -5140,11 +5049,8 @@ components:
             type: string
         maintenancePolicy:
           $ref: '#/components/schemas/MaintenancePolicy'
-          description: Behaviour on maintenance events
         scalePolicy:
           $ref: '#/components/schemas/ScalePolicy'
-          description: Scale policy. Only fixed number of hosts are supported at this
-            moment.
     UpdateImageMetadata:
       type: object
       properties:
@@ -5156,8 +5062,6 @@ components:
       properties:
         updateMask:
           $ref: '#/components/schemas/FieldMask'
-          description: Field mask that specifies which fields of the Image resource
-            are going to be updated.
         name:
           description: |-
             Name of the image.
@@ -5237,19 +5141,13 @@ components:
           type: string
         updateMask:
           $ref: '#/components/schemas/FieldMask'
-          description: Field mask that specifies which attributes of the instance
-            should be updated.
         subnetId:
           description: ID of the subnet.
           type: string
         primaryV4AddressSpec:
           $ref: '#/components/schemas/PrimaryAddressSpec'
-          description: Primary IPv4 address that will be assigned to the instance
-            for this network interface.
         primaryV6AddressSpec:
           $ref: '#/components/schemas/PrimaryAddressSpec'
-          description: Primary IPv6 address that will be assigned to the instance
-            for this network interface. IPv6 not available yet.
         securityGroupIds:
           description: ID's of security groups attached to the interface.
           type: array
@@ -5260,8 +5158,6 @@ components:
       properties:
         updateMask:
           $ref: '#/components/schemas/FieldMask'
-          description: Field mask that specifies which fields of the Instance resource
-            are going to be updated.
         name:
           description: |-
             Name of the instance.
@@ -5299,9 +5195,6 @@ components:
           type: string
         resourcesSpec:
           $ref: '#/components/schemas/ResourcesSpec'
-          description: |-
-            Computing resources of the instance, such as the amount of memory and number of cores.
-            To get a list of available values, see [Levels of core performance](/docs/compute/concepts/performance-levels).
         metadata:
           description: |-
             The metadata `key:value` pairs that will be assigned to this instance. This includes custom metadata and predefined keys.
@@ -5324,10 +5217,8 @@ components:
           type: string
         networkSettings:
           $ref: '#/components/schemas/NetworkSettings'
-          description: Network settings.
         placementPolicy:
           $ref: '#/components/schemas/PlacementPolicy'
-          description: Placement policy configuration.
     UpdatePlacementGroupMetadata:
       type: object
       properties:
@@ -5339,8 +5230,6 @@ components:
       properties:
         updateMask:
           $ref: '#/components/schemas/FieldMask'
-          description: Field mask that specifies which fields of the PlacementGroup
-            resource should be updated.
         name:
           description: Name of the placement group.
           type: string
@@ -5366,8 +5255,6 @@ components:
       properties:
         updateMask:
           $ref: '#/components/schemas/FieldMask'
-          description: Field mask that specifies which fields of the Snapshot resource
-            are going to be updated.
         name:
           description: |-
             Name of the snapshot.
@@ -5406,7 +5293,6 @@ components:
           type: string
         status:
           $ref: '#/components/schemas/ZoneStatus'
-          description: Status of the zone.
     ZoneStatus:
       description: |2-
          - UP: Zone is available. You can access the resources allocated in this zone.

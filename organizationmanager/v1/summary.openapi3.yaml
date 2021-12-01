@@ -1,4 +1,4 @@
-openapi: "3.0"
+openapi: "3.0.0"
 info:
   title: Yandex Organization Management API
   description: This API reference is organized by resource. Actions are performed
@@ -387,10 +387,6 @@ components:
           type: string
         subject:
           $ref: '#/components/schemas/Subject'
-          description: |-
-            Required.
-            Identity for which access binding is being created.
-            It can represent an account with a unique ID or several accounts with a system identifier.
     AccessBindingAction:
       description: |2-
          - ADD: Addition of an access binding.
@@ -404,14 +400,8 @@ components:
       properties:
         action:
           $ref: '#/components/schemas/AccessBindingAction'
-          description: |-
-            Required.
-            The action that is being performed on an access binding.
         accessBinding:
           $ref: '#/components/schemas/AccessBinding'
-          description: |-
-            Required.
-            Access binding. For more information, see [Access Bindings](/docs/iam/concepts/access-control/#access-bindings).
     DeleteMembershipMetadata:
       type: object
       properties:
@@ -513,8 +503,6 @@ components:
       properties:
         subjectClaims:
           $ref: '#/components/schemas/SubjectClaims'
-          description: OpenID standard claims with additional Yandex.Organization
-            claims.
     ListOrganizationOperationsResponse:
       type: object
       properties:
@@ -594,7 +582,6 @@ components:
         properties:
           error:
             $ref: '#/components/schemas/Status'
-            description: The error result of the operation in case of failure or cancellation.
           response:
             description: |-
               The normal response of the operation in case of success.
@@ -756,7 +743,6 @@ components:
           type: string
         federation:
           $ref: '#/components/schemas/Federation'
-          description: User federation, non-empty only for federated users.
     UpdateAccessBindingsMetadata:
       type: object
       properties:
@@ -786,8 +772,6 @@ components:
       properties:
         updateMask:
           $ref: '#/components/schemas/FieldMask'
-          description: Field mask that specifies which fields of the organization
-            are going to be updated.
         name:
           description: |-
             Name of the organization.
